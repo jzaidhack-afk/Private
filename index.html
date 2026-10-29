@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية وشروط الاستخدام | Zw_d1 Bot</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0070f3',
+                            purple: '#7928ca',
+                            cyan: '#00dfd8',
+                            orange: '#ff4d4d',
+                            yellow: '#f5a623'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Font Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0d1117;
+            color: #f3f4f6;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Gradient Glowing Background Effects */
+        .glow-bg {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 223, 216, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Light Theme Overrides */
+        body.light {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        body.light .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        body.light .glass-card:hover {
+            border-color: rgba(121, 40, 202, 0.3);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+        body.light ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        body.light ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+        }
+
+        /* Custom Badge Animation */
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        .pulse-effect {
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-brand-cyan selection:text-black">
+
+    <!-- Glowing Animated Background Spheres -->
+    <div class="glow-bg w-96 h-96 bg-brand-cyan top-0 right-10"></div>
+    <div class="glow-bg w-96 h-96 bg-brand-purple top-1/3 left-10"></div>
+    <div class="glow-bg w-96 h-96 bg-brand-orange bottom-10 right-1/4"></div>
+
+    <!-- Top Navigation / Controls Bar -->
+    <header class="relative z-10 w-full max-w-5xl mx-auto px-4 pt-6 flex justify-between items-center">
+        <!-- Brand Title Mini -->
+        <div class="flex items-center space-x-3 space-x-reverse">
+            <span class="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">
+                Zw_d1 Bot
+            </span>
+        </div>
+
+        <!-- Theme Toggle Button -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="p-3 rounded-xl glass-card text-gray-300 hover:text-white transition-all focus:outline-none flex items-center gap-2 text-sm font-medium">
+            <i id="themeIcon" class="fas fa-moon text-yellow-400"></i>
+            <span id="themeText" class="hidden sm:inline">الوضع الداكن</span>
+        </button>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10 max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+
+        <!-- Header Hero & Logo Section -->
+        <div class="text-center mb-12">
+            <!-- User Provided Logo Image -->
+            <div class="relative inline-block mb-6 group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-orange-500 rounded-3xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
+                <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden glass-card p-2 shadow-2xl mx-auto flex items-center justify-center">
+                    <img id="botLogo" src="15935.jpg" alt="Logo" class="w-full h-full object-cover rounded-xl transition duration-500 transform group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1e293b/00dfd8?text=Zw_d1+Bot';">
+                </div>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-orange-400">
+                شروط الاستخدام وسياسة الخصوصية
+            </h1>
+            <p class="text-gray-400 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+                يرجى قراءة هذه الشروط والسياسات بعناية قبل استخدام بوت تليجرام أو التطبيق المصغر (Mini App).
+            </p>
+            
+            <!-- Quick Badge -->
+            <div class="mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                خدمة مجانية 100%
+            </div>
+        </div>
+
+        <!-- Terms & Policies Grid / Cards -->
+        <div class="space-y-4 sm:space-y-6">
+
+            <!-- Item 1 -->
+            <div class="glass-card p-5 sm:p-6 rounded-2xl flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold text-lg">
+                    1
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold mb-1 text-gray-100 dark:text-gray-100 flex items-center gap-2">
+                        <i class="fas fa-file-contract text-blue-400 text-sm"></i>
+                        الموافقة على الشروط
+                    </h3>
+                    <p class="text-gray-300 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                        عند استخدامك للبوت، فإنك توافق تلقائياً على جميع الشروط والأحكام الموضحة في هذه الصفحة والتزامك التام بها.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="glass-card p-5 sm:p-6 rounded-2xl flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold text-lg">
+                    2
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold mb-1 text-gray-100 dark:text-gray-100 flex items-center gap-2">
+                        <i class="fab fa-google text-purple-400 text-sm"></i>
+                        تسجيل الدخول وربط الحساب
+                    </h3>
+                    <p class="text-gray-300 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                        عند ربط حساب جوجل بـ <strong>Mini App Telegram</strong>، ليس لدينا أي حق للوصول إلى معلوماتك الشخصية أو الملفات الخاصة بك. تسجيل الدخول إجراء ضروري فقط لتسهيل وتخصيص تجربة الاستخدام.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="glass-card p-5 sm:p-6 rounded-2xl flex items-start gap-4 border-red-500/20">
+                <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-red-500/30 flex items-center justify-center text-red-400 font-bold text-lg">
+                    3
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold mb-1 text-gray-100 dark:text-gray-100 flex items-center gap-2">
+                        <i class="fas fa-shield-alt text-red-400 text-sm"></i>
+                        الاستخدام المقبول للذكاء الاصطناعي (AI)
+                    </h3>
+                    <p class="text-gray-300 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                        يمنع منعاً باتاً استخدام الذكاء الاصطناعي في إنتاج أو ترويج المحتوى المخالف للآداب والقوانين، مثل: العنف، الترويج للأنشطة المحظورة، والمحتوى المخصص للبالغين (+18).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="glass-card p-5 sm:p-6 rounded-2xl flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-yellow-500/20 to-amber-500/20 border border-yellow-500/30 flex items-center justify-center text-yellow-400 font-bold text-lg">
+                    4
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold mb-1 text-gray-100 dark:text-gray-100 flex items-center gap-2">
+                        <i class="fas fa-filter text-yellow-400 text-sm"></i>
+                        تحديثات الأمان والفلترة
+                    </h3>
+                    <p class="text-gray-300 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                        في تاريخ <span class="inline-block px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-300 font-mono font-bold dir-ltr">16/11/2026</span> سيتم إضافة نظام فلترة الكلمات التلقائي ونظام الحظر (الباند) للمخالفين لضمان بيئة آمنة للجميع.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="glass-card p-5 sm:p-6 rounded-2xl flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-lg">
+                    5
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold mb-1 text-gray-100 dark:text-gray-100 flex items-center gap-2">
+                        <i class="fas fa-gift text-emerald-400 text-sm"></i>
+                        مجانية الخدمة
+                    </h3>
+                    <p class="text-gray-300 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                        البوت مجاني بنسبة <strong>100%</strong>، والتطبيق المصغر (Mini App) سيتوفر قريباً جداً لإتاحة مميزات إضافية للمستخدمين.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="glass-card p-5 sm:p-6 rounded-2xl flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-blue-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-lg">
+                    6
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold mb-1 text-gray-100 dark:text-gray-100 flex items-center gap-2">
+                        <i class="fas fa-edit text-indigo-400 text-sm"></i>
+                        التعديلات على السياسات
+                    </h3>
+                    <p class="text-gray-300 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                        قد يتم إجراء تعديلات أو تحديثات على هذه السياسات والشروط بشكل دوري، ويسري الشروط المحدثة فور نشرها على هذه الصفحة.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Accept Button Action -->
+        <div class="mt-10 text-center">
+            <button id="acceptBtn" onclick="acceptTerms()" class="relative group overflow-hidden px-8 py-4 rounded-xl font-bold text-lg text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition duration-300 focus:outline-none">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                    <i class="fas fa-check-circle"></i>
+                    قرأت وأوافق على الشروط
+                </span>
+                <div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer Section with Links -->
+    <footer class="relative z-10 w-full max-w-5xl mx-auto px-4 py-8 mt-8 border-t border-gray-800/60 dark:border-gray-800/60">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-right">
+            
+            <!-- Bot Quick Info -->
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <div class="flex items-center gap-2">
+                    <i class="fab fa-telegram text-cyan-400 text-2xl"></i>
+                    <span class="font-bold text-lg">البوت الرسمي:</span>
+                </div>
+                <a href="https://t.me/Zw_d1_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold bg-cyan-500/10 px-4 py-2 rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition">
+                    <span>@Zw_d1_bot</span>
+                    <i class="fas fa-external-link-alt text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Social Media Links for Developer -->
+            <div class="flex flex-col items-center md:items-end gap-3">
+                <span class="text-sm font-semibold text-gray-400">حسابات المطور:</span>
+                <div class="flex items-center gap-3">
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com/@zw_di" target="_blank" rel="noopener noreferrer" title="TikTok" class="w-11 h-11 rounded-xl glass-card flex items-center justify-center text-gray-300 hover:text-white hover:border-pink-500/50 hover:bg-pink-500/10 transition group">
+                        <i class="fab fa-tiktok text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+
+                    <!-- Telegram -->
+                    <a href="https://t.me/zw_di" target="_blank" rel="noopener noreferrer" title="Telegram" class="w-11 h-11 rounded-xl glass-card flex items-center justify-center text-gray-300 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition group">
+                        <i class="fab fa-telegram-plane text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/zw_di?srtk=MWIydTkxc2VreWZ2Zg==" target="_blank" rel="noopener noreferrer" title="Instagram" class="w-11 h-11 rounded-xl glass-card flex items-center justify-center text-gray-300 hover:text-pink-400 hover:border-purple-500/50 hover:bg-purple-500/10 transition group">
+                        <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center text-xs text-gray-500 mt-8">
+            جميع الحقوق محفوظة &copy; <span id="currentYear"></span> Zw_d1 Bot
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass-card bg-emerald-950/90 border-emerald-500/40 text-emerald-200 px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
+            <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+            <span id="toastMsg" class="text-sm font-semibold">شكراً لك! تم تأكيد موافقتك على الشروط.</span>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Dark/Light Theme Switch Logic
+        let isDark = true;
+        function toggleTheme() {
+            isDark = !isDark;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            const text = document.getElementById('themeText');
+
+            if (isDark) {
+                body.classList.remove('light');
+                document.documentElement.classList.add('dark');
+                icon.className = 'fas fa-moon text-yellow-400';
+                text.textContent = 'الوضع الداكن';
+            } else {
+                body.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                icon.className = 'fas fa-sun text-orange-500';
+                text.textContent = 'الوضع الفاتح';
+            }
+        }
+
+        // Show Dynamic Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        // Accept Terms Handler
+        function acceptTerms() {
+            const btn = document.getElementById('acceptBtn');
+            btn.classList.add('opacity-80', 'scale-95');
+            setTimeout(() => btn.classList.remove('scale-95'), 150);
+
+            showToast('شكراً لك! تم تسجيل موافقتك على الشروط بنجاح.');
+        }
+    </script>
+</body>
+</html>
